@@ -1,0 +1,46 @@
+#!/bin/bash
+
+
+endpoint='https://api.echo.nasa.gov/catalog-rest/echo_catalog/datasets'
+accept='application/echo10+xml'
+page_size=2000
+page_num=1
+
+
+last_hdr=''
+at_end='false'
+while true
+do
+  printf -v results_ 'echo_datasets_%d_%d.' ${page_size} ${page_num}
+  printf -v results_file '%sxml' "${results_}"
+  printf -v results_hdr '%shdr' "${results_}"
+  printf -v request_url '%s?page_size=%d&page_num=%d' "${endpoint}" ${page_size} ${page_num}
+
+  if [ -f "${results_hdr}" ]
+  then
+    at_end=$( cat "${results_hdr}" | dos2unix | sed -n -e 's/^Echo-Cursor-At-End: //p' )
+    last_hdr="${results_hdr}"
+    let page_num++
+  else
+    break
+  fi
+done
+
+if [ "$at_end" = 'false' ]
+then
+  if curl \
+          --silent \
+          --show-error \
+          --header "Accept: ${accept}" \
+          --dump-header "${results_hdr}" \
+          --output "${results_file}" \
+          "${request_url}"
+  then
+    printf 'fetched to %q\n' "${results_file}"
+  else
+    printf 'failed to fetch %q\n' "${request_url}"
+  fi
+else
+  printf 'already at end: %q\n' "${last_hdr}"
+fi
+
