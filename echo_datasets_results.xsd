@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="xsi.xsd"/>
+  <xs:element name="results">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="result"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="result">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Collection"/>
+      </xs:sequence>
+      <xs:attribute name="echo_dataset_id" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Collection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ShortName"/>
+        <xs:element ref="VersionId"/>
+        <xs:element ref="InsertTime"/>
+        <xs:element ref="LastUpdate"/>
+        <xs:element ref="LongName"/>
+        <xs:element ref="DataSetId"/>
+        <xs:element ref="Description"/>
+        <xs:element ref="Orderable"/>
+        <xs:element ref="Visible"/>
+        <xs:element minOccurs="0" ref="RevisionDate"/>
+        <xs:element minOccurs="0" ref="SuggestedUsage"/>
+        <xs:element minOccurs="0" ref="ProcessingCenter"/>
+        <xs:element minOccurs="0" ref="ProcessingLevelId"/>
+        <xs:element minOccurs="0" ref="ProcessingLevelDescription"/>
+        <xs:element minOccurs="0" ref="ArchiveCenter"/>
+        <xs:element minOccurs="0" ref="VersionDescription"/>
+        <xs:element minOccurs="0" ref="CitationForExternalPublication"/>
+        <xs:element minOccurs="0" ref="CollectionState"/>
+        <xs:choice minOccurs="0">
+          <xs:element ref="MaintenanceAndUpdateFrequency"/>
+          <xs:element ref="RestrictionFlag"/>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="RestrictionComment"/>
+        <xs:element minOccurs="0" ref="Price"/>
+        <xs:element minOccurs="0" ref="DataFormat"/>
+        <xs:element ref="SpatialKeywords"/>
+        <xs:element minOccurs="0" ref="TemporalKeywords"/>
+        <xs:element minOccurs="0" ref="Temporal"/>
+        <xs:element minOccurs="0" ref="Contacts"/>
+        <xs:element minOccurs="0" ref="ScienceKeywords"/>
+        <xs:element minOccurs="0" ref="Platforms"/>
+        <xs:element minOccurs="0" ref="AdditionalAttributes"/>
+        <xs:element minOccurs="0" ref="CSDTDescriptions"/>
+        <xs:element minOccurs="0" ref="CollectionAssociations"/>
+        <xs:element minOccurs="0" ref="Campaigns"/>
+        <xs:element minOccurs="0" ref="AlgorithmPackages"/>
+        <xs:element minOccurs="0" ref="TwoDCoordinateSystems"/>
+        <xs:element minOccurs="0" ref="SpatialInfo"/>
+        <xs:element minOccurs="0" ref="OnlineAccessURLs"/>
+        <xs:element minOccurs="0" ref="OnlineResources"/>
+        <xs:element minOccurs="0" ref="AssociatedDIFs"/>
+        <xs:element minOccurs="0" ref="Spatial"/>
+        <xs:element minOccurs="0" ref="AssociatedBrowseImageUrls"/>
+      </xs:sequence>
+      <xs:attribute ref="xsi:noNamespaceSchemaLocation"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertTime" type="xs:NMTOKEN"/>
+  <xs:element name="LastUpdate" type="xs:NMTOKEN"/>
+  <xs:element name="DataSetId" type="xs:string"/>
+  <xs:element name="Orderable" type="xs:boolean"/>
+  <xs:element name="Visible" type="xs:boolean"/>
+  <xs:element name="RevisionDate" type="xs:NMTOKEN"/>
+  <xs:element name="SuggestedUsage" type="xs:string"/>
+  <xs:element name="ProcessingCenter" type="xs:string"/>
+  <xs:element name="ProcessingLevelId" type="xs:string"/>
+  <xs:element name="ProcessingLevelDescription" type="xs:string"/>
+  <xs:element name="ArchiveCenter" type="xs:string"/>
+  <xs:element name="VersionDescription" type="xs:string"/>
+  <xs:element name="CitationForExternalPublication" type="xs:string"/>
+  <xs:element name="CollectionState" type="xs:string"/>
+  <xs:element name="MaintenanceAndUpdateFrequency" type="xs:string"/>
+  <xs:element name="RestrictionFlag" type="xs:integer"/>
+  <xs:element name="RestrictionComment" type="xs:string"/>
+  <xs:element name="Price" type="xs:decimal"/>
+  <xs:element name="DataFormat" type="xs:string"/>
+  <xs:element name="SpatialKeywords">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Keyword"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TemporalKeywords">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="Keyword"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Temporal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="TimeType"/>
+          <xs:element ref="DateType"/>
+          <xs:element ref="TemporalRangeType"/>
+          <xs:element ref="PrecisionOfSeconds"/>
+          <xs:element ref="EndsAtPresentFlag"/>
+        </xs:sequence>
+        <xs:choice>
+          <xs:element ref="RangeDateTime"/>
+          <xs:element maxOccurs="unbounded" ref="SingleDateTime"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TimeType" type="xs:string"/>
+  <xs:element name="DateType" type="xs:string"/>
+  <xs:element name="TemporalRangeType" type="xs:string"/>
+  <xs:element name="PrecisionOfSeconds" type="xs:integer"/>
+  <xs:element name="EndsAtPresentFlag" type="xs:boolean"/>
+  <xs:element name="RangeDateTime">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="BeginningDateTime"/>
+        <xs:element minOccurs="0" ref="EndingDateTime"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BeginningDateTime" type="xs:NMTOKEN"/>
+  <xs:element name="EndingDateTime" type="xs:NMTOKEN"/>
+  <xs:element name="SingleDateTime" type="xs:NMTOKEN"/>
+  <xs:element name="Contacts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Contact"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Contact">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Role"/>
+        <xs:element minOccurs="0" ref="HoursOfService"/>
+        <xs:element minOccurs="0" ref="Instructions"/>
+        <xs:element minOccurs="0" ref="OrganizationName"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="OrganizationAddresses"/>
+          <xs:element ref="OrganizationPhones"/>
+        </xs:sequence>
+        <xs:element ref="OrganizationEmails"/>
+        <xs:element minOccurs="0" ref="ContactPersons"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Role" type="xs:string"/>
+  <xs:element name="HoursOfService" type="xs:string"/>
+  <xs:element name="Instructions" type="xs:anyURI"/>
+  <xs:element name="OrganizationName" type="xs:string"/>
+  <xs:element name="OrganizationAddresses">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Address"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Address">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="StreetAddress"/>
+        <xs:element ref="City"/>
+        <xs:element ref="StateProvince"/>
+        <xs:element ref="PostalCode"/>
+        <xs:element ref="Country"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StreetAddress" type="xs:string"/>
+  <xs:element name="City" type="xs:string"/>
+  <xs:element name="StateProvince" type="xs:string"/>
+  <xs:element name="PostalCode" type="xs:string"/>
+  <xs:element name="Country" type="xs:NMTOKEN"/>
+  <xs:element name="OrganizationPhones">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Phone"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Phone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Number"/>
+        <xs:element ref="Type"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Number" type="xs:string"/>
+  <xs:element name="OrganizationEmails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="Email"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Email" type="xs:string"/>
+  <xs:element name="ContactPersons">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ContactPerson"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContactPerson">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="FirstName"/>
+        <xs:element minOccurs="0" ref="MiddleName"/>
+        <xs:element ref="LastName"/>
+        <xs:element minOccurs="0" ref="JobPosition"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FirstName" type="xs:string"/>
+  <xs:element name="MiddleName" type="xs:NCName"/>
+  <xs:element name="LastName" type="xs:string"/>
+  <xs:element name="JobPosition" type="xs:string"/>
+  <xs:element name="ScienceKeywords">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ScienceKeyword"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ScienceKeyword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="CategoryKeyword"/>
+        <xs:element ref="TopicKeyword"/>
+        <xs:element ref="TermKeyword"/>
+        <xs:element minOccurs="0" ref="VariableLevel1Keyword"/>
+        <xs:element minOccurs="0" ref="DetailedVariableKeyword"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CategoryKeyword" type="xs:string"/>
+  <xs:element name="TopicKeyword" type="xs:string"/>
+  <xs:element name="TermKeyword" type="xs:string"/>
+  <xs:element name="VariableLevel1Keyword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Value"/>
+        <xs:element minOccurs="0" ref="VariableLevel2Keyword"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VariableLevel2Keyword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Value"/>
+        <xs:element minOccurs="0" ref="VariableLevel3Keyword"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VariableLevel3Keyword" type="xs:string"/>
+  <xs:element name="DetailedVariableKeyword" type="xs:string"/>
+  <xs:element name="Platforms">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Platform"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Platform">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ShortName"/>
+        <xs:element ref="LongName"/>
+        <xs:element ref="Type"/>
+        <xs:element minOccurs="0" ref="Characteristics"/>
+        <xs:element ref="Instruments"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Instruments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Instrument"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Instrument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ShortName"/>
+        <xs:element minOccurs="0" ref="LongName"/>
+        <xs:element minOccurs="0" ref="Technique"/>
+        <xs:element minOccurs="0" ref="NumberOfSensors"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="Characteristics"/>
+          <xs:element ref="Sensors"/>
+          <xs:element ref="OperationModes"/>
+        </xs:sequence>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NumberOfSensors" type="xs:integer"/>
+  <xs:element name="Sensors">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Sensor"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sensor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ShortName"/>
+        <xs:element minOccurs="0" ref="LongName"/>
+        <xs:element minOccurs="0" ref="Technique"/>
+        <xs:element ref="Characteristics"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperationModes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="OperationMode"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OperationMode" type="xs:NCName"/>
+  <xs:element name="AdditionalAttributes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="AdditionalAttribute"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdditionalAttribute">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Name"/>
+        <xs:element ref="DataType"/>
+        <xs:element ref="Description"/>
+        <xs:element minOccurs="0" ref="Value"/>
+        <xs:element minOccurs="0" ref="MeasurementResolution"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="ParameterRangeBegin"/>
+          <xs:element ref="ParameterRangeEnd"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="ParameterUnitsOfMeasure"/>
+        <xs:choice minOccurs="0">
+          <xs:element ref="ParameterValueAccuracy"/>
+          <xs:element ref="ValueAccuracyExplanation"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MeasurementResolution" type="xs:decimal"/>
+  <xs:element name="ParameterRangeBegin" type="xs:decimal"/>
+  <xs:element name="ParameterRangeEnd" type="xs:decimal"/>
+  <xs:element name="ParameterUnitsOfMeasure" type="xs:string"/>
+  <xs:element name="ParameterValueAccuracy" type="xs:integer"/>
+  <xs:element name="ValueAccuracyExplanation" type="xs:string"/>
+  <xs:element name="CSDTDescriptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="CSDTDescription"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CSDTDescription">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="PrimaryCSDT"/>
+        <xs:element ref="Implementation"/>
+        <xs:element minOccurs="0" ref="CSDTComments"/>
+        <xs:element minOccurs="0" ref="IndirectReference"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PrimaryCSDT" type="xs:string"/>
+  <xs:element name="Implementation" type="xs:NCName"/>
+  <xs:element name="CSDTComments" type="xs:string"/>
+  <xs:element name="IndirectReference" type="xs:string"/>
+  <xs:element name="CollectionAssociations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="CollectionAssociation"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CollectionAssociation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ShortName"/>
+        <xs:element ref="VersionId"/>
+        <xs:element ref="CollectionType"/>
+        <xs:element ref="CollectionUse"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CollectionType" type="xs:string"/>
+  <xs:element name="CollectionUse" type="xs:string"/>
+  <xs:element name="Campaigns">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Campaign"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Campaign">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ShortName"/>
+        <xs:element minOccurs="0" ref="LongName"/>
+        <xs:element minOccurs="0" ref="StartDate"/>
+        <xs:element minOccurs="0" ref="EndDate"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StartDate" type="xs:NMTOKEN"/>
+  <xs:element name="EndDate" type="xs:NMTOKEN"/>
+  <xs:element name="AlgorithmPackages">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="TwoDCoordinateSystems">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="TwoDCoordinateSystem"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TwoDCoordinateSystem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TwoDCoordinateSystemName"/>
+        <xs:element ref="Coordinate1"/>
+        <xs:element ref="Coordinate2"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TwoDCoordinateSystemName" type="xs:string"/>
+  <xs:element name="Coordinate1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MinimumValue"/>
+        <xs:element ref="MaximumValue"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Coordinate2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MinimumValue"/>
+        <xs:element ref="MaximumValue"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SpatialInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="SpatialCoverageType"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="VerticalCoordinateSystem"/>
+          <xs:element ref="HorizontalCoordinateSystem"/>
+        </xs:sequence>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerticalCoordinateSystem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="AltitudeSystemDefinition"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AltitudeSystemDefinition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DatumName"/>
+        <xs:element ref="DistanceUnits"/>
+        <xs:element ref="EncodingMethod"/>
+        <xs:element ref="Resolutions"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DatumName" type="xs:string"/>
+  <xs:element name="DistanceUnits" type="xs:NCName"/>
+  <xs:element name="EncodingMethod" type="xs:string"/>
+  <xs:element name="Resolutions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Resolution"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Resolution" type="xs:decimal"/>
+  <xs:element name="HorizontalCoordinateSystem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="GeodeticModel"/>
+        <xs:element ref="GeographicCoordinateSystem"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GeodeticModel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="EllipsoidName"/>
+        <xs:element ref="SemiMajorAxis"/>
+        <xs:element ref="DenominatorOfFlatteningRatio"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EllipsoidName" type="xs:string"/>
+  <xs:element name="SemiMajorAxis" type="xs:decimal"/>
+  <xs:element name="DenominatorOfFlatteningRatio" type="xs:decimal"/>
+  <xs:element name="GeographicCoordinateSystem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="GeographicCoordinateUnits"/>
+        <xs:element ref="LatitudeResolution"/>
+        <xs:element ref="LongitudeResolution"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GeographicCoordinateUnits" type="xs:string"/>
+  <xs:element name="LatitudeResolution" type="xs:decimal"/>
+  <xs:element name="LongitudeResolution" type="xs:decimal"/>
+  <xs:element name="OnlineAccessURLs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="OnlineAccessURL"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnlineAccessURL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="URL"/>
+        <xs:element minOccurs="0" ref="URLDescription"/>
+        <xs:element minOccurs="0" ref="MimeType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="URLDescription" type="xs:string"/>
+  <xs:element name="MimeType" type="xs:string"/>
+  <xs:element name="OnlineResources">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="OnlineResource"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnlineResource">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="URL"/>
+        <xs:element minOccurs="0" ref="Description"/>
+        <xs:element ref="Type"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssociatedDIFs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="DIF"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DIF">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="EntryId"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EntryId" type="xs:NMTOKEN"/>
+  <xs:element name="Spatial">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="SpatialCoverageType"/>
+        <xs:element minOccurs="0" ref="HorizontalSpatialDomain"/>
+        <xs:choice>
+          <xs:element ref="OrbitParameters"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="VerticalSpatialDomain"/>
+        </xs:choice>
+        <xs:element ref="GranuleSpatialRepresentation"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HorizontalSpatialDomain">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ZoneIdentifier"/>
+        <xs:element ref="Geometry"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZoneIdentifier" type="xs:string"/>
+  <xs:element name="Geometry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="CoordinateSystem"/>
+        <xs:choice>
+          <xs:element ref="Point"/>
+          <xs:element ref="Line"/>
+          <xs:element maxOccurs="unbounded" ref="BoundingRectangle"/>
+          <xs:element maxOccurs="unbounded" ref="GPolygon"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CoordinateSystem" type="xs:NCName"/>
+  <xs:element name="Line">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Point"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BoundingRectangle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="WestBoundingCoordinate"/>
+        <xs:element ref="NorthBoundingCoordinate"/>
+        <xs:element ref="EastBoundingCoordinate"/>
+        <xs:element ref="SouthBoundingCoordinate"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WestBoundingCoordinate" type="xs:decimal"/>
+  <xs:element name="NorthBoundingCoordinate" type="xs:decimal"/>
+  <xs:element name="EastBoundingCoordinate" type="xs:decimal"/>
+  <xs:element name="SouthBoundingCoordinate" type="xs:decimal"/>
+  <xs:element name="GPolygon">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Boundary"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Boundary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Point"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OrbitParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="SwathWidth"/>
+        <xs:element ref="Period"/>
+        <xs:element ref="InclinationAngle"/>
+        <xs:element ref="NumberOfOrbits"/>
+        <xs:element ref="StartCircularLatitude"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SwathWidth" type="xs:integer"/>
+  <xs:element name="Period" type="xs:decimal"/>
+  <xs:element name="InclinationAngle" type="xs:decimal"/>
+  <xs:element name="NumberOfOrbits" type="xs:decimal"/>
+  <xs:element name="StartCircularLatitude" type="xs:integer"/>
+  <xs:element name="VerticalSpatialDomain">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Type"/>
+        <xs:element ref="Value"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GranuleSpatialRepresentation" type="xs:NCName"/>
+  <xs:element name="AssociatedBrowseImageUrls">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ProviderBrowseUrl"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProviderBrowseUrl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="URL"/>
+        <xs:element ref="FileSize"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FileSize" type="xs:integer"/>
+  <xs:element name="ShortName" type="xs:string"/>
+  <xs:element name="VersionId" type="xs:string"/>
+  <xs:element name="LongName" type="xs:string"/>
+  <xs:element name="Description" type="xs:string"/>
+  <xs:element name="Keyword" type="xs:string"/>
+  <xs:element name="Type" type="xs:string"/>
+  <xs:element name="Value" type="xs:string"/>
+  <xs:element name="Characteristics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Characteristic"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Characteristic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Name"/>
+        <xs:element ref="Description"/>
+        <xs:element ref="DataType"/>
+        <xs:element ref="Unit"/>
+        <xs:element ref="Value"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Unit" type="xs:string"/>
+  <xs:element name="Technique" type="xs:string"/>
+  <xs:element name="Name" type="xs:NCName"/>
+  <xs:element name="DataType" type="xs:NCName"/>
+  <xs:element name="MinimumValue" type="xs:integer"/>
+  <xs:element name="MaximumValue" type="xs:integer"/>
+  <xs:element name="SpatialCoverageType" type="xs:string"/>
+  <xs:element name="URL" type="xs:anyURI"/>
+  <xs:element name="Point">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="PointLongitude"/>
+        <xs:element ref="PointLatitude"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PointLongitude" type="xs:decimal"/>
+  <xs:element name="PointLatitude" type="xs:decimal"/>
+</xs:schema>
